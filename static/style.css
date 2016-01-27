@@ -1,8 +1,8 @@
 @font-face {
     font-family: 'icomoon';
-    src: url('/static/fonts/icomoon.woff2?oc3l3b') format('woff2'),
-    	url('/static/fonts/icomoon.woff?oc3l3b') format('woff'),
-    	url('/static/fonts/icomoon.ttf?oc3l3b') format('truetype');
+    src: url('/MobileComics/static/fonts/icomoon.woff2?oc3l3b') format('woff2'),
+    	url('/MobileComics/static/fonts/icomoon.woff?oc3l3b') format('woff'),
+    	url('/MobileComics/static/fonts/icomoon.ttf?oc3l3b') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
