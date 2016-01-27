@@ -19,7 +19,7 @@ The cropping screen is what someone would see after uploading an image. Some thi
 
 ## Other Notes
 * I know I can disable the gallery for desktop browsing, but it makes it slightly easier debugging to not have a tiny mobile-sized window up.
-* JS libs used: [PhotoSwipe](http://photoswipe.com/) & [tracking.js](https://trackingjs.com/)
+* JS libs used: [PhotoSwipe](http://photoswipe.com/), [tracking.js](https://trackingjs.com/), and [Image Map Resize](https://github.com/davidjbradshaw/image-map-resizer) (which only works on some mobile browsers...)
 * Lua modules used: [Magick](https://github.com/leafo/magick), [Lapis](http://leafo.net/lapis/), and the ever-wonderful cjson
 * Loosely based on the interesting paper *Comics page structure analysis based on automatic panel extraction* by Anh Khoi Ngo ho, Jean-Christophe Burie, and Jean-Marc Ogier.
 * All comics are from the glorious mind of Randall Munroe creator of [xkcd](http://xkcd.com) used under [Creative Commons Attribution-NonCommercial 2.5 License](http://creativecommons.org/licenses/by-nc/2.5/).
