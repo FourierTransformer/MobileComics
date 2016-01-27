@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<html>
+<head>
+	<title>xkcd: Electoral Precedent</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/picnicss/4.1.1/picnic.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+	<script src="/static/tracking.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/mithril/0.2.2-rc.1/mithril.min.js"></script>
+	
+	<!-- PhotoSwipe Goodness! -->
+	<!-- I should find a way to only load this on the main page... -->
+	<link href="/static/photoswipe.css?v=4.1.1-1.0.4" rel="stylesheet" />
+    <link href="/static/default-skin/default-skin.css?v=4.1.1-1.0.4" rel="stylesheet" />
+	<script src="/static/photoswipe.min.js?v=4.1.1-1.0.4"></script>
+	<script src="/static/photoswipe-ui-default.min.js?v=4.1.1-1.0.4"></script>
+	<script src="/static/imageMapResizer.min.js"></script>
+</head>
+<body>
+	<div class="header">
+		<h1><a href="/" rel="home">JS XKCD</a></h1>
+	</div>
+	<h2>Electoral Precedent</h2>
+<!-- 
+<img id="image" src="/static/images/electoral_precedent.png" title="No white guy who&#039;s been mentioned on Twitter has gone on to win." alt="Electoral Precedent" >
+ -->
+
+<img id="image" src="/static/images/electoral_precedent.png" title="No white guy who&#039;s been mentioned on Twitter has gone on to win." alt="Electoral Precedent" usemap="#mobileMap">
+
+
+<!-- this is a little gross. This should probably be an imagemap. I blame JS. -->
+<map name="mobileMap">
+	<div id="demo-test-gallery" class="demo-gallery">
+		
+	  		<area shape="rect" coords="0,6,245,158" data-size="245x152" href="/static/mobile/1/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="248,1,369,157" data-size="121x156" href="/static/mobile/2/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="372,2,493,158" data-size="121x156" href="/static/mobile/3/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="495,1,616,156" data-size="121x155" href="/static/mobile/4/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="619,2,740,144" data-size="121x142" href="/static/mobile/5/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="0,161,121,318" data-size="121x157" href="/static/mobile/6/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="124,161,245,317" data-size="121x156" href="/static/mobile/7/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="248,162,369,317" data-size="121x155" href="/static/mobile/8/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="372,162,493,317" data-size="121x155" href="/static/mobile/9/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="495,162,616,317" data-size="121x155" href="/static/mobile/10/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="619,162,740,316" data-size="121x154" href="/static/mobile/11/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="0,320,121,461" data-size="121x141" href="/static/mobile/12/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="124,320,245,461" data-size="121x141" href="/static/mobile/13/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="248,321,369,476" data-size="121x155" href="/static/mobile/14/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="372,321,493,461" data-size="121x140" href="/static/mobile/15/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="495,321,616,461" data-size="121x140" href="/static/mobile/16/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="619,321,740,461" data-size="121x140" href="/static/mobile/17/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="0,478,121,635" data-size="121x157" href="/static/mobile/18/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="124,478,245,635" data-size="121x157" href="/static/mobile/19/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="248,479,369,636" data-size="121x157" href="/static/mobile/20/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="372,479,493,635" data-size="121x156" href="/static/mobile/21/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="495,479,616,634" data-size="121x155" href="/static/mobile/22/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="619,479,740,635" data-size="121x156" href="/static/mobile/23/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="0,639,121,781" data-size="121x142" href="/static/mobile/24/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="124,639,245,795" data-size="121x156" href="/static/mobile/25/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="248,638,369,781" data-size="121x143" href="/static/mobile/26/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="372,638,493,781" data-size="121x143" href="/static/mobile/27/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="495,638,616,795" data-size="121x157" href="/static/mobile/28/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="619,638,740,795" data-size="121x157" href="/static/mobile/29/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="0,797,121,953" data-size="121x156" href="/static/mobile/30/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="124,797,245,939" data-size="121x142" href="/static/mobile/31/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="248,798,369,952" data-size="121x154" href="/static/mobile/32/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="372,798,493,939" data-size="121x141" href="/static/mobile/33/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="495,798,616,939" data-size="121x141" href="/static/mobile/34/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="619,798,740,939" data-size="121x141" href="/static/mobile/35/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="0,957,121,1113" data-size="121x156" href="/static/mobile/36/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="124,957,245,1113" data-size="121x156" href="/static/mobile/37/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="248,958,369,1113" data-size="121x155" href="/static/mobile/38/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="372,958,493,1114" data-size="121x156" href="/static/mobile/39/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="495,958,616,1113" data-size="121x155" href="/static/mobile/40/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="619,958,740,1113" data-size="121x155" href="/static/mobile/41/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="0,1116,121,1274" data-size="121x158" href="/static/mobile/42/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="124,1116,245,1273" data-size="121x157" href="/static/mobile/43/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="248,1117,369,1273" data-size="121x156" href="/static/mobile/44/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="372,1117,493,1272" data-size="121x155" href="/static/mobile/45/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="495,1117,616,1274" data-size="121x157" href="/static/mobile/46/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="619,1117,740,1260" data-size="121x143" href="/static/mobile/47/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="0,1278,121,1432" data-size="121x154" href="/static/mobile/48/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="124,1278,245,1419" data-size="121x141" href="/static/mobile/49/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="248,1278,369,1433" data-size="121x155" href="/static/mobile/50/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="372,1278,493,1433" data-size="121x155" href="/static/mobile/51/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="495,1278,616,1431" data-size="121x153" href="/static/mobile/52/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="619,1278,740,1431" data-size="121x153" href="/static/mobile/53/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="0,1437,121,1592" data-size="121x155" href="/static/mobile/54/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="124,1437,245,1593" data-size="121x156" href="/static/mobile/55/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="248,1437,369,1592" data-size="121x155" href="/static/mobile/56/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="372,1437,493,1593" data-size="121x156" href="/static/mobile/57/electoral_precedent.png" />
+		
+	  		<area shape="rect" coords="495,1437,740,1600" data-size="245x163" href="/static/mobile/58/electoral_precedent.png" />
+		
+	</div>
+</map>
+
+
+
+<p class="nav" style="text-align: center;">
+	<a href="/1" class="icon-step-backward button pseudo"><span class="text">First</span></a>
+	<a href="/1121" class="icon-backward button pseudo"><span class="text">Prev</span></a>
+	<a href="/1441" class="icon-random button pseudo"><span class="text">Random</span></a>
+	<a href="/1123" class="icon-forward button pseudo"><span class="text">Next</span></a>
+	<a href="/1624" class="icon-step-forward button pseudo"><span class="text">Last</span></a>
+	<p>To see the "cropped" version: <a href="/crop/1122"> CLICK HERE </a></p>
+</p>
+
+
+    <div id="gallery" class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+
+        <div class="pswp__scroll-wrap">
+
+          <div class="pswp__container">
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+          </div>
+
+          <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+				<div class="pswp__counter"></div>
+
+				<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+				<button class="pswp__button pswp__button--share" title="Share"></button>
+
+				<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+				<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+				<div class="pswp__preloader">
+					<div class="pswp__preloader__icn">
+					  <div class="pswp__preloader__cut">
+					    <div class="pswp__preloader__donut"></div>
+					  </div>
+					</div>
+				</div>
+            </div>
+
+
+			<!-- <div class="pswp__loading-indicator"><div class="pswp__loading-indicator__line"></div></div> -->
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+	        </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+              <div class="pswp__caption__center">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+    </div>
+    
+  
+    <script type="text/javascript">
+    (function() {
+
+		var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+			var parseThumbnailElements = function(el) {
+
+				console.log(el);
+
+			    var thumbElements = el.childNodes,
+			        numNodes = thumbElements.length,
+			        items = [],
+			        el,
+			        childElements,
+			        thumbnailEl,
+			        size,
+			        item;
+
+			    for(var i = 0; i < numNodes; i++) {
+			        el = thumbElements[i];
+
+			        // include only element nodes 
+			        if(el.nodeType !== 1) {
+			          continue;
+			        }
+
+			        childElements = el.children;
+
+			        size = el.getAttribute('data-size').split('x');
+
+			        // create slide object
+			        item = {
+						src: el.getAttribute('href'),
+						w: parseInt(size[0], 10),
+						h: parseInt(size[1], 10)
+			        };
+
+			        item.el = el; // save link to element for getThumbBoundsFn
+
+			        if(childElements.length > 0) {
+			          item.msrc = childElements[0].getAttribute('src'); // thumbnail url
+			          if(childElements.length > 1) {
+			              item.title = childElements[1].innerHTML; // caption (contents of figure)
+			          }
+			        }
+
+		          	// original image
+		          	item.o = {
+		          		src: item.src,
+		          		w: item.w,
+		          		h: item.h
+		          	};
+
+			        items.push(item);
+			    }
+
+			    return items;
+			};
+
+			// find nearest parent element
+			var closest = function closest(el, fn) {
+			    return el && ( fn(el) ? el : closest(el.parentNode, fn) );
+			};
+
+			var onThumbnailsClick = function(e) {
+			    e = e || window.event;
+			    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+			    var eTarget = e.target || e.srcElement;
+
+			    var clickedListItem = closest(eTarget, function(el) {
+			        return el.tagName === 'AREA';
+			    });
+
+			    if(!clickedListItem) {
+			        return;
+			    }
+
+			    var clickedGallery = clickedListItem.parentNode;
+
+			    var childNodes = clickedListItem.parentNode.childNodes,
+			        numChildNodes = childNodes.length,
+			        nodeIndex = 0,
+			        index;
+
+			    for (var i = 0; i < numChildNodes; i++) {
+			        if(childNodes[i].nodeType !== 1) { 
+			            continue; 
+			        }
+
+			        if(childNodes[i] === clickedListItem) {
+			            index = nodeIndex;
+			            break;
+			        }
+			        nodeIndex++;
+			    }
+
+			    if(index >= 0) {
+			    	console.log(index);
+			        openPhotoSwipe( index, clickedGallery, true );
+			    }
+			    return false;
+			};
+
+			var photoswipeParseHash = function() {
+				var hash = window.location.hash.substring(1),
+			    params = {};
+
+			    if(hash.length < 5) { // pid=1
+			        return params;
+			    }
+
+			    var vars = hash.split('&');
+			    for (var i = 0; i < vars.length; i++) {
+			        if(!vars[i]) {
+			            continue;
+			        }
+			        var pair = vars[i].split('=');  
+			        if(pair.length < 2) {
+			            continue;
+			        }           
+			        params[pair[0]] = pair[1];
+			    }
+
+			    if(params.gid) {
+			    	params.gid = parseInt(params.gid, 10);
+			    }
+
+			    return params;
+			};
+
+			var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+			    var pswpElement = document.querySelectorAll('.pswp')[0],
+			        gallery,
+			        options,
+			        items;
+
+				items = parseThumbnailElements(galleryElement);
+
+			    // define options (if needed)
+			    options = {
+
+			        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+			        addCaptionHTMLFn: function(item, captionEl, isFake) {
+						if(!item.title) {
+							captionEl.children[0].innerText = '';
+							return false;
+						}
+						captionEl.children[0].innerHTML = item.title;
+						return true;
+			        },
+			        mainClass: 'pswp--minimal--dark',
+			        barsSize: {top:0,bottom:0},
+					captionEl: true,
+					fullscreenEl: false,
+					shareEl: false,
+					bgOpacity: 0.85,
+					tapToClose: true,
+					tapToToggleControls: false
+					
+			    };
+
+
+			    if(fromURL) {
+			    	if(options.galleryPIDs) {
+			    		// parse real index when custom PIDs are used 
+			    		// http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+			    		for(var j = 0; j < items.length; j++) {
+			    			if(items[j].pid == index) {
+			    				options.index = j;
+			    				break;
+			    			}
+			    		}
+				    } else {
+				    	options.index = parseInt(index, 10) - 1;
+				    }
+			    } else {
+			    	options.index = parseInt(index, 10);
+			    }
+
+			    // exit if index not found
+			    if( isNaN(options.index) ) {
+			    	return;
+			    }
+
+			    if(disableAnimation) {
+			        options.showAnimationDuration = 0;
+			    }
+
+			    // Pass data to PhotoSwipe and initialize it
+			    gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+
+				gallery.listen('gettingData', function(index, item) {
+			        item.src = item.o.src;
+			        item.w = item.o.w;
+			        item.h = item.o.h;
+				});
+
+			    gallery.init();
+			};
+
+			// select all gallery elements
+			var galleryElements = document.querySelectorAll( gallerySelector );
+			for(var i = 0, l = galleryElements.length; i < l; i++) {
+				galleryElements[i].setAttribute('data-pswp-uid', i+1);
+				galleryElements[i].onclick = onThumbnailsClick;
+			}
+
+			// Parse URL and open gallery if it contains #&pid=3&gid=1
+			var hashData = photoswipeParseHash();
+			if(hashData.pid && hashData.gid) {
+				openPhotoSwipe( hashData.pid,  galleryElements[ hashData.gid - 1 ], true, true );
+			}
+		};
+
+		imageMapResize();
+		initPhotoSwipeFromDOM('.demo-gallery');
+
+	})();
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<html>
+<head>
+	<title>xkcd: A Bunch of Rocks</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/picnicss/4.1.1/picnic.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+	<script src="/static/tracking.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/mithril/0.2.2-rc.1/mithril.min.js"></script>
+	
+	<!-- PhotoSwipe Goodness! -->
+	<!-- I should find a way to only load this on the main page... -->
+	<link href="/static/photoswipe.css?v=4.1.1-1.0.4" rel="stylesheet" />
+    <link href="/static/default-skin/default-skin.css?v=4.1.1-1.0.4" rel="stylesheet" />
+	<script src="/static/photoswipe.min.js?v=4.1.1-1.0.4"></script>
+	<script src="/static/photoswipe-ui-default.min.js?v=4.1.1-1.0.4"></script>
+	<script src="/static/imageMapResizer.min.js"></script>
+</head>
+<body>
+	<div class="header">
+		<h1><a href="/" rel="home">JS XKCD</a></h1>
+	</div>
+	<h2>A Bunch of Rocks</h2>
+<!-- 
+<img id="image" src="/static/images/a_bunch_of_rocks.png" title="I call Rule 34 on Wolfram&#039;s Rule 34." alt="A Bunch of Rocks" >
+ -->
+
+<img id="image" src="/static/images/a_bunch_of_rocks.png" title="I call Rule 34 on Wolfram&#039;s Rule 34." alt="A Bunch of Rocks" usemap="#mobileMap">
+
+
+<!-- this is a little gross. This should probably be an imagemap. I blame JS. -->
+<map name="mobileMap">
+	<div id="demo-test-gallery" class="demo-gallery">
+		
+	  		<area shape="rect" coords="0,0,675,193" data-size="675x193" href="/static/mobile/1/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="0,203,157,343" data-size="157x140" href="/static/mobile/2/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="166,203,331,343" data-size="165x140" href="/static/mobile/3/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="340,203,499,343" data-size="159x140" href="/static/mobile/4/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="508,203,675,343" data-size="167x140" href="/static/mobile/5/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="0,352,191,523" data-size="191x171" href="/static/mobile/6/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="200,352,331,523" data-size="131x171" href="/static/mobile/7/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="340,352,675,523" data-size="335x171" href="/static/mobile/8/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="0,533,175,673" data-size="175x140" href="/static/mobile/9/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="184,533,331,673" data-size="147x140" href="/static/mobile/10/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="340,533,499,673" data-size="159x140" href="/static/mobile/11/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="508,533,675,673" data-size="167x140" href="/static/mobile/12/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="0,681,175,842" data-size="175x161" href="/static/mobile/13/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="184,681,331,842" data-size="147x161" href="/static/mobile/14/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="340,681,499,842" data-size="159x161" href="/static/mobile/15/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="508,681,675,842" data-size="167x161" href="/static/mobile/16/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="0,852,191,1023" data-size="191x171" href="/static/mobile/17/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="200,852,675,1023" data-size="475x171" href="/static/mobile/18/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="0,1032,175,1187" data-size="175x155" href="/static/mobile/19/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="184,1032,378,1187" data-size="194x155" href="/static/mobile/20/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="387,1032,522,1187" data-size="135x155" href="/static/mobile/21/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="531,1032,675,1187" data-size="144x155" href="/static/mobile/22/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="0,1196,331,1367" data-size="331x171" href="/static/mobile/23/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="340,1196,675,1367" data-size="335x171" href="/static/mobile/24/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="0,1376,212,1603" data-size="212x227" href="/static/mobile/25/a_bunch_of_rocks.png" />
+		
+	  		<area shape="rect" coords="221,1376,675,1603" data-size="454x227" href="/static/mobile/26/a_bunch_of_rocks.png" />
+		
+	</div>
+</map>
+
+
+
+<p class="nav" style="text-align: center;">
+	<a href="/1" class="icon-step-backward button pseudo"><span class="text">First</span></a>
+	<a href="/504" class="icon-backward button pseudo"><span class="text">Prev</span></a>
+	<a href="/501" class="icon-random button pseudo"><span class="text">Random</span></a>
+	<a href="/506" class="icon-forward button pseudo"><span class="text">Next</span></a>
+	<a href="/1624" class="icon-step-forward button pseudo"><span class="text">Last</span></a>
+	<p>To see the "cropped" version: <a href="/crop/505"> CLICK HERE </a></p>
+</p>
+
+
+    <div id="gallery" class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+
+        <div class="pswp__scroll-wrap">
+
+          <div class="pswp__container">
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+          </div>
+
+          <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+				<div class="pswp__counter"></div>
+
+				<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+				<button class="pswp__button pswp__button--share" title="Share"></button>
+
+				<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+				<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+				<div class="pswp__preloader">
+					<div class="pswp__preloader__icn">
+					  <div class="pswp__preloader__cut">
+					    <div class="pswp__preloader__donut"></div>
+					  </div>
+					</div>
+				</div>
+            </div>
+
+
+			<!-- <div class="pswp__loading-indicator"><div class="pswp__loading-indicator__line"></div></div> -->
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+	        </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+              <div class="pswp__caption__center">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+    </div>
+    
+  
+    <script type="text/javascript">
+    (function() {
+
+		var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+			var parseThumbnailElements = function(el) {
+
+				console.log(el);
+
+			    var thumbElements = el.childNodes,
+			        numNodes = thumbElements.length,
+			        items = [],
+			        el,
+			        childElements,
+			        thumbnailEl,
+			        size,
+			        item;
+
+			    for(var i = 0; i < numNodes; i++) {
+			        el = thumbElements[i];
+
+			        // include only element nodes 
+			        if(el.nodeType !== 1) {
+			          continue;
+			        }
+
+			        childElements = el.children;
+
+			        size = el.getAttribute('data-size').split('x');
+
+			        // create slide object
+			        item = {
+						src: el.getAttribute('href'),
+						w: parseInt(size[0], 10),
+						h: parseInt(size[1], 10)
+			        };
+
+			        item.el = el; // save link to element for getThumbBoundsFn
+
+			        if(childElements.length > 0) {
+			          item.msrc = childElements[0].getAttribute('src'); // thumbnail url
+			          if(childElements.length > 1) {
+			              item.title = childElements[1].innerHTML; // caption (contents of figure)
+			          }
+			        }
+
+		          	// original image
+		          	item.o = {
+		          		src: item.src,
+		          		w: item.w,
+		          		h: item.h
+		          	};
+
+			        items.push(item);
+			    }
+
+			    return items;
+			};
+
+			// find nearest parent element
+			var closest = function closest(el, fn) {
+			    return el && ( fn(el) ? el : closest(el.parentNode, fn) );
+			};
+
+			var onThumbnailsClick = function(e) {
+			    e = e || window.event;
+			    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+			    var eTarget = e.target || e.srcElement;
+
+			    var clickedListItem = closest(eTarget, function(el) {
+			        return el.tagName === 'AREA';
+			    });
+
+			    if(!clickedListItem) {
+			        return;
+			    }
+
+			    var clickedGallery = clickedListItem.parentNode;
+
+			    var childNodes = clickedListItem.parentNode.childNodes,
+			        numChildNodes = childNodes.length,
+			        nodeIndex = 0,
+			        index;
+
+			    for (var i = 0; i < numChildNodes; i++) {
+			        if(childNodes[i].nodeType !== 1) { 
+			            continue; 
+			        }
+
+			        if(childNodes[i] === clickedListItem) {
+			            index = nodeIndex;
+			            break;
+			        }
+			        nodeIndex++;
+			    }
+
+			    if(index >= 0) {
+			    	console.log(index);
+			        openPhotoSwipe( index, clickedGallery, true );
+			    }
+			    return false;
+			};
+
+			var photoswipeParseHash = function() {
+				var hash = window.location.hash.substring(1),
+			    params = {};
+
+			    if(hash.length < 5) { // pid=1
+			        return params;
+			    }
+
+			    var vars = hash.split('&');
+			    for (var i = 0; i < vars.length; i++) {
+			        if(!vars[i]) {
+			            continue;
+			        }
+			        var pair = vars[i].split('=');  
+			        if(pair.length < 2) {
+			            continue;
+			        }           
+			        params[pair[0]] = pair[1];
+			    }
+
+			    if(params.gid) {
+			    	params.gid = parseInt(params.gid, 10);
+			    }
+
+			    return params;
+			};
+
+			var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+			    var pswpElement = document.querySelectorAll('.pswp')[0],
+			        gallery,
+			        options,
+			        items;
+
+				items = parseThumbnailElements(galleryElement);
+
+			    // define options (if needed)
+			    options = {
+
+			        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+			        addCaptionHTMLFn: function(item, captionEl, isFake) {
+						if(!item.title) {
+							captionEl.children[0].innerText = '';
+							return false;
+						}
+						captionEl.children[0].innerHTML = item.title;
+						return true;
+			        },
+			        mainClass: 'pswp--minimal--dark',
+			        barsSize: {top:0,bottom:0},
+					captionEl: true,
+					fullscreenEl: false,
+					shareEl: false,
+					bgOpacity: 0.85,
+					tapToClose: true,
+					tapToToggleControls: false
+					
+			    };
+
+
+			    if(fromURL) {
+			    	if(options.galleryPIDs) {
+			    		// parse real index when custom PIDs are used 
+			    		// http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+			    		for(var j = 0; j < items.length; j++) {
+			    			if(items[j].pid == index) {
+			    				options.index = j;
+			    				break;
+			    			}
+			    		}
+				    } else {
+				    	options.index = parseInt(index, 10) - 1;
+				    }
+			    } else {
+			    	options.index = parseInt(index, 10);
+			    }
+
+			    // exit if index not found
+			    if( isNaN(options.index) ) {
+			    	return;
+			    }
+
+			    if(disableAnimation) {
+			        options.showAnimationDuration = 0;
+			    }
+
+			    // Pass data to PhotoSwipe and initialize it
+			    gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+
+				gallery.listen('gettingData', function(index, item) {
+			        item.src = item.o.src;
+			        item.w = item.o.w;
+			        item.h = item.o.h;
+				});
+
+			    gallery.init();
+			};
+
+			// select all gallery elements
+			var galleryElements = document.querySelectorAll( gallerySelector );
+			for(var i = 0, l = galleryElements.length; i < l; i++) {
+				galleryElements[i].setAttribute('data-pswp-uid', i+1);
+				galleryElements[i].onclick = onThumbnailsClick;
+			}
+
+			// Parse URL and open gallery if it contains #&pid=3&gid=1
+			var hashData = photoswipeParseHash();
+			if(hashData.pid && hashData.gid) {
+				openPhotoSwipe( hashData.pid,  galleryElements[ hashData.gid - 1 ], true, true );
+			}
+		};
+
+		imageMapResize();
+		initPhotoSwipeFromDOM('.demo-gallery');
+
+	})();
+
+	</script>
+</body>
+</html>

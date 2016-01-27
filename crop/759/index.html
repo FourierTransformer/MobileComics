@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<html>
+<head>
+	<title>xkcd: 3x9</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/picnicss/4.1.1/picnic.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+	<script src="/static/tracking.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/mithril/0.2.2-rc.1/mithril.min.js"></script>
+	
+	<!-- PhotoSwipe Goodness! -->
+	<!-- I should find a way to only load this on the main page... -->
+	<link href="/static/photoswipe.css?v=4.1.1-1.0.4" rel="stylesheet" />
+    <link href="/static/default-skin/default-skin.css?v=4.1.1-1.0.4" rel="stylesheet" />
+	<script src="/static/photoswipe.min.js?v=4.1.1-1.0.4"></script>
+	<script src="/static/photoswipe-ui-default.min.js?v=4.1.1-1.0.4"></script>
+	<script src="/static/imageMapResizer.min.js"></script>
+</head>
+<body>
+	<div class="header">
+		<h1><a href="/" rel="home">JS XKCD</a></h1>
+	</div>
+	<h2>3x9</h2>
+<!-- 
+<img id="image" src="/static/images/3x9.png" title="Handy exam trick: when you know the answer but not the correct derivation, derive blindly forward from the givens and backward from the answer, and join the chains once the equations start looking similar. Sometimes the graders don&#039;t notice the seam." alt="3x9" >
+ -->
+
+<img id="image" src="/static/images/3x9.png" title="Handy exam trick: when you know the answer but not the correct derivation, derive blindly forward from the givens and backward from the answer, and join the chains once the equations start looking similar. Sometimes the graders don&#039;t notice the seam." alt="3x9" >
+
+
+
+
+<p class="nav" style="text-align: center;">
+	<a href="/crop/1" class="icon-step-backward button pseudo"><span class="text">First</span></a>
+	<a href="/crop/758" class="icon-backward button pseudo"><span class="text">Prev</span></a>
+	<a href="/crop/25" class="icon-random button pseudo"><span class="text">Random</span></a>
+	<a href="/crop/760" class="icon-forward button pseudo"><span class="text">Next</span></a>
+	<a href="/crop/1624" class="icon-step-forward button pseudo"><span class="text">Last</span></a>
+	<p>To see the "final" version: <a href="/759"> CLICK HERE </a></p>
+</p>
+
+<canvas id="canvas"></canvas>
+
+<script>
+    window.onload = function() {
+
+      // load the canvas and the context
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+
+      // setup the image and get it's heigh/width
+      var image = document.getElementById('image');
+      var width = image.width;
+      var height = image.height;
+
+      // we need to create an offset, so when we do a fill we can find
+      // find the panels in the corners of the closesly cropped images
+      var offset = 10;
+      var offsetWidth = width+(offset * 2)
+      var offsetHeight = height+(offset * 2)
+
+      // readjust the canvas height and make it white so our offset fill can fill it!
+      canvas.width = offsetWidth;
+      canvas.height = offsetHeight;
+      context.fillStyle="white";
+      context.fillRect(0, 0, canvas.width, canvas.height);
+
+      var floodFillWhitespace = function() {
+        // throw the image on there!
+        context.drawImage(image, offset, offset, width, height);
+
+        // grab the data and make it grayscale (I think this makes it faster [well at least easier for me!] to process)
+        var imageData = context.getImageData(0, 0, offsetWidth, offsetHeight);
+        var gray = tracking.Image.grayscale(imageData.data, offsetWidth, offsetHeight);
+
+        // turn a point ([x, y]) into a value in the grayscale array
+        function getArrayIndex(point) {
+          return point[1]*offsetWidth + point[0];
+        }
+
+        // DELUGE BITCHES!
+        // returns an array of just gray. it also floods over the default areas
+        function floodFill(grayArray, start, target, replacement) {
+          var topValue = 0;
+          var toEvaluate = [];
+
+          // js hacks to make a queue...!
+          function pop() {
+            var element = toEvaluate[topValue];
+            topValue++;
+            return element;
+          }
+
+          var newArray = new Uint8ClampedArray(grayArray.length);
+
+          function replaceColor(cell) {
+            // replace the color!
+              grayArray[getArrayIndex(cell)] = replacement;
+              newArray[getArrayIndex(cell)] = replacement;
+              var top = [cell[0], cell[1]-1];
+              var bottom = [cell[0], cell[1]+1];
+              if (grayArray[getArrayIndex(bottom)] >= target) {
+                toEvaluate.push(bottom);
+              }
+              
+              if (grayArray[getArrayIndex(top)] >= target) {
+                toEvaluate.push(top);
+              }
+          }
+
+          if (grayArray[getArrayIndex(start)] < target) { return; }
+          toEvaluate.push(start);
+
+          while(toEvaluate[topValue] != null) {
+            var currentPixel = pop();
+            
+            // go to the left!
+            var left = [currentPixel[0] - 1, currentPixel[1]];
+            while(grayArray[getArrayIndex(left)] >= target && left[0] >= 0) {
+              
+              replaceColor(left);
+
+              // update the value of left
+              left = [left[0]-1, left[1]]
+            }
+
+            // go to the right!
+            var right = [currentPixel[0] + 1, currentPixel[1]];
+            while(grayArray[getArrayIndex(right)] >= target && right[0] <= offsetWidth) {
+              
+              replaceColor(right);
+
+              // update the value of right
+              right = [right[0]+1, right[1]]
+            }
+
+          }
+
+          return newArray;
+
+        }
+
+        // get just the flood filled array
+        var newArray = floodFill(gray, [0,0], 215, 128);
+
+        // display it to the screen. This is surprisingly fast!
+        for (var x = 0; x < offsetWidth; x++) {
+          for (var y = 0; y < offsetHeight; y++) {
+            var color = newArray[y*offsetWidth + x];
+
+            // here we turn "black" into yellow!
+            if (color !== 128) {
+              context.fillStyle = "rgb(255, 255, 0)";
+            } else {
+              context.fillStyle = "rgb("+color+","+color+","+color+")";
+            }
+            context.fillRect( x, y, 1, 1 );
+          }
+        }
+      };
+
+      floodFillWhitespace();
+
+      // lets do some tracking to find the yellow "squares"
+      var colors = new tracking.ColorTracker('yellow');
+      // colors.setMaxDimension(offsetHeight*.75);
+      colors.setMinDimension(30);
+      // colors.setMinGroupSize(30);
+
+      colors.on('track', function(event) {
+        var allStripBottoms = [];
+        var panels = [];
+        if (event.data.length === 0) {
+          // No colors were detected in this frame.
+        } else {
+          event.data.forEach(function(rect) {
+            if (typeof(allStripBottoms[rect.y+rect.height]) === "undefined") {
+                var existingBottom = false;
+                allStripBottoms.forEach(function(bottom, index) {
+                    if (Math.abs(index - (rect.y + rect.height - offset)) < 30) {
+                        var theLowestBottom = Math.max(index, rect.y + rect.height);
+                        var newBottomCount = bottom + 1;
+                        allStripBottoms.splice(index, 1);
+                        allStripBottoms[theLowestBottom] = newBottomCount;
+                        console.log(newBottomCount);
+                        existingBottom = true;
+                    }
+                })
+                if (existingBottom == false) {
+                    allStripBottoms[rect.y+rect.height] = 1;
+                }
+            } else {
+                allStripBottoms[rect.y+rect.height]++;
+            }
+            panels.push({x: rect.x, y: rect.y, height: rect.height, width: rect.width});
+            // console.log(rect.y, rect.height, rect.y+rect.height);
+            context.strokeStyle = "rgba("+255+","+0+","+0+",255)";
+            context.strokeRect( rect.x, rect.y, rect.width, rect.height );
+          });
+        }
+
+        console.log(allStripBottoms);
+
+        // just the y coords are stored here for the "real" strip bottoms
+        importantStripBottoms = [];        
+        allStripBottoms.forEach(function(bottom, index) {
+            if (bottom > 1) {
+                context.strokeStyle = "rgb(0,255,0)";
+                context.strokeRect( 0, index, offsetWidth, 1 );
+                importantStripBottoms.push(index);
+            } else if (bottom === 1) {
+                for (var i = 0; i < panels.length; i++) {
+
+                    // it might be a panel that takes up the entire width of the page!
+                    // or a 1 panel strip
+                    if (panels[i].y + panels[i].height == index) {
+                        if (panels[i].width >= .5 * width) {
+                            context.strokeStyle = "rgb(0,255,0)";
+                            context.strokeRect( 0, index, offsetWidth, 1 );
+                            importantStripBottoms.push(index);
+                        }
+                    }
+                };
+            }
+        });
+
+        // determine which panels go with which strips!
+        // BUT FIRST, we must sort!
+        importantStripBottoms.sort(function compareNumbers(a, b) {
+          return a - b;
+        });
+
+        strips = [];
+        for (var i = 0; i < importantStripBottoms.length; i++) {
+            for (var j = 0; j < panels.length; j++) {
+                // I use the sorted allStripBottoms array and the ".panel" property to ensure a panel only ever ends up in one strip
+                if (panels[j].panel == null &&
+                    ((panels[j].y + panels[j].height) <= importantStripBottoms[i])) {
+                    
+                    // gotta keep track of our panels!
+                    if (typeof(strips[i]) === "undefined") {
+                        strips[i] = [];
+                    }
+                    strips[i].push(j);
+                    panels[j].panel = i;
+
+                }
+            };
+            importantStripBottoms[i]
+        };
+
+        // sort the strips to get the panel numbering!
+        // left to right ordering system (unless the x values are close, then up and down)
+        function comparePanels(a, b) {
+            if (Math.abs(panels[a].x - panels[b].x) < 10) {
+                return panels[a].y - panels[b].y
+            } else {
+                return panels[a].x - panels[b].x
+            };
+        }
+        
+        // just so we can see/crop it!
+        var json = {toCrop: [], image: "3x9.png"};
+        var count = 1;
+        for (var i = 0; i < strips.length; i++) {
+            strips[i].sort(comparePanels);
+            for (var j = 0; j < strips[i].length; j++) {
+                var panel = panels[strips[i][j]];
+                context.fillStyle="#000000";
+                context.font="30px Verdana";
+                context.fillText(count, panel.x+10, panel.y+35);
+                json.toCrop.push({sequence: count, 
+                            x: panel.x-offset, y: panel.y-offset, 
+                            width: panel.width+1, height:panel.height+1 })
+                count++;
+            };
+        };
+
+        var stringy = JSON.stringify(json);
+
+        console.log(stringy);
+
+        // m.request({
+        //     method: "POST",
+        //     url: "/crop/759",
+        //     serialize: function(json) {return ("crop=" + stringy)}
+        // })
+
+      });
+
+      tracking.track('#canvas', colors);
+    }
+  </script>
+
+</body>
+</html>
