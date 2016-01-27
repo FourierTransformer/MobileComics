@@ -1,0 +1,57 @@
+<% render("views.index") %>
+
+<h1>WebComics Quick Links</h1>
+<div class="box">
+<p>You can read up more about it on the <a href="https://github.com/FourierTransformer/MobileComics">GitHub page.</a> This is just a page with a bunch of quick links to various strips to help when I was writing the code and testing for panel detection/numbering. They should still be good examples of what MobileComics is and isn't capable of. Almost all of XKCD up to 1624 is here.</p>
+
+<p>Good example of numbering:</p>
+<ul>
+	<li><a href="/crop/657">657</a></li>
+	<li><a href="/crop/208">208</a></li>
+	<li><a href="/crop/778">778</a></li>
+	<li><a href="/crop/654">654</a></li>
+</ul>
+
+<p>WTF:</p>
+<ul>
+	<li><a href="/crop/1310">1310</a> (odd numbering)</li>
+	<li><a href="/crop/1341">1341</a> (letters detected)</li>
+	<li><a href="/crop/887">887</a> (circular layout)</li>
+	<li><a href="/crop/1379">1379</a> (crazy word detection causing improper strip detection)</li>
+	<li><a href="/crop/165">165</a> (can't differentiate the panels)</li>
+	<li><a href="/crop/541">541</a> (missing the last panel - didn't get numbered)</li>
+	<li><a href="/crop/1305">1305</a> (missing text panel)</li>
+	<li><a href="/crop/430">430</a> (dream sequence. FREE FORM...)</li>
+	<li><a href="/crop/20">20</a> (askew gutters)</li>
+</ul>
+
+<p>[FIXED] WTF:</p>
+<ul>
+	<li><a href="/crop/44">44</a> (unable to determine script line)</li>
+	<li><a href="/crop/6">6</a> (unable to determine script line)</li>
+	<li><a href="/crop/487">487</a> (missing bottom strip line...)</li>
+	<li><a href="/crop/823">823</a> (boxes detected, but numbering failed - looks like heavy artifacting...)</li>
+	<li><a href="/crop/1046">1046</a> (Text goes below the "bottom line")</li>
+</ul>
+
+<p>[FIXED] Odd Flood-fill threshold due to jpeg artifacts (assuming >215 is white):</p>
+<ul>
+	<li><a href="/crop/927">927</a></li>
+	<li><a href="/crop/6">6</a></li>
+	<li><a href="/crop/44">44</a></li>
+	<li><a href="/crop/145">145</a></li>
+	<li><a href="/crop/515">515</a></li>
+	<li><a href="/crop/2">2</a> (lolz)</li>
+</ul>
+
+<p>If I want to try adding editing capabilities (or fixing detection of no-border boxes) or box snapping:</p>
+<ul>
+	<li><a href="/crop/853">853</a></li>
+	<li><a href="/crop/1073">1073</a></li>
+	<li><a href="/crop/201">201</a></li>
+	<li><a href="/crop/1586">1586</a></li>
+	<li><a href="/crop/941">941</a> (now just a missing textbox. Before it got the ordering wrong as well...)</li>
+	<li><a href="/crop/806">806</a> </li>
+</ul>
+
+</div>

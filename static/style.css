@@ -21,6 +21,12 @@ h2 {
 	padding-bottom: 0;
 }
 
+.box {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
 .pswp__bg {
     background: white !important;
 }

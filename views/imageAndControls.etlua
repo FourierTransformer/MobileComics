@@ -25,6 +25,7 @@
 	<a href="/crop/<%= math.random(1, 1624) %>" class="icon-random button pseudo"><span class="text">Random</span></a>
 	<a href="/crop/<%= nav.next %>" class="icon-forward button pseudo"><span class="text">Next</span></a>
 	<a href="/crop/1624" class="icon-step-forward button pseudo"><span class="text">Last</span></a>
+	<p>To see the "final" version: <a href="/<%= params.id %>"> CLICK HERE </a></p>
 </p>
 <% else %>
 <p class="nav" style="text-align: center;">
@@ -33,5 +34,6 @@
 	<a href="/<%= math.random(1, 1624) %>" class="icon-random button pseudo"><span class="text">Random</span></a>
 	<a href="/<%= nav.next %>" class="icon-forward button pseudo"><span class="text">Next</span></a>
 	<a href="/1624" class="icon-step-forward button pseudo"><span class="text">Last</span></a>
+	<p>To see the "cropped" version: <a href="/crop/<%= params.id %>"> CLICK HERE </a></p>
 </p>
 <% end %>

@@ -55,12 +55,13 @@ local function calculate_signature(str)
 end
 
 app:get("/", function(self)
+	self.params.id = 1624
 	ok, info = getComic()
 	self.today = info.comics
 	self.nav = info.nav
 	self.title = "xkcd: " .. self.today.title
 	self.crop = false
-  	return { render = "index" }
+  	return { render = "gh-index" }
 end)
 
 app:get("/:id", function(self)
