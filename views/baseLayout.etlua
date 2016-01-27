@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<html>
+<head>
+	<title><%= title or "PLEASE SET self.title in route" %></title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/picnicss/4.1.1/picnic.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+	<script src="/static/tracking.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/mithril/0.2.2-rc.1/mithril.min.js"></script>
+	
+	<!-- PhotoSwipe Goodness! -->
+	<!-- I should find a way to only load this on the main page... -->
+	<link href="/static/photoswipe.css?v=4.1.1-1.0.4" rel="stylesheet" />
+    <link href="/static/default-skin/default-skin.css?v=4.1.1-1.0.4" rel="stylesheet" />
+	<script src="/static/photoswipe.min.js?v=4.1.1-1.0.4"></script>
+	<script src="/static/photoswipe-ui-default.min.js?v=4.1.1-1.0.4"></script>
+	<script src="/static/imageMapResizer.min.js"></script>
+</head>
+<body>
+	<div class="header">
+		<h1><a href="/" rel="home">JS XKCD</a></h1>
+	</div>
+	<% content_for("inner") %>
+</body>
+</html>

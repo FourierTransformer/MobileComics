@@ -1,0 +1,13 @@
+config.lua
+logs/
+static/images/
+static/mobile/
+*_temp/
+nginx.conf.compiled
+frontend/node_modules/
+*.js.map
+other docs/
+*.sublime-*
+.DS_Store
+*.log
+output.txt

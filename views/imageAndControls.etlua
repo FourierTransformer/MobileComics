@@ -1,0 +1,37 @@
+<h2><%= today.title %></h2>
+<!-- <% if today.image_link then %>
+<a href="<%= today.image_link %>"><img id="image" src="/static/images/<%= today.image_url%>" title="<%= today.hover_text %>" alt="<%= today.title %>" ></a>
+<% else %>
+<img id="image" src="/static/images/<%= today.image_url%>" title="<%= today.hover_text %>" alt="<%= today.title %>" >
+<% end %> -->
+
+<img id="image" src="/static/images/<%= today.image_url%>" title="<%= today.hover_text %>" alt="<%= today.title %>" <% if panels then %>usemap="#mobileMap"<% end %>>
+
+<% if panels and #panels > 1 then %>
+<!-- this is a little gross. This should probably be an imagemap. I blame JS. -->
+<map name="mobileMap">
+	<div id="demo-test-gallery" class="demo-gallery">
+		<% for _, panel in ipairs(panels) do %>
+	  		<area shape="rect" coords="<%= panel.x %>,<%= panel.y %>,<%= panel.x + panel.width %>,<%= panel.y + panel.height %>" data-size="<%= panel.width %>x<%= panel.height %>" href="/static/mobile/<%= panel.sequence_no %>/<%= today.image_url%>" />
+		<% end %>
+	</div>
+</map>
+<% end %>
+
+<% if crop then %>
+<p class="nav" style="text-align: center;">
+	<a href="/crop/1" class="icon-step-backward button pseudo"><span class="text">First</span></a>
+	<a href="/crop/<%= nav.previous %>" class="icon-backward button pseudo"><span class="text">Prev</span></a>
+	<a href="/crop/<%= math.random(1, 1624) %>" class="icon-random button pseudo"><span class="text">Random</span></a>
+	<a href="/crop/<%= nav.next %>" class="icon-forward button pseudo"><span class="text">Next</span></a>
+	<a href="/crop/1624" class="icon-step-forward button pseudo"><span class="text">Last</span></a>
+</p>
+<% else %>
+<p class="nav" style="text-align: center;">
+	<a href="/1" class="icon-step-backward button pseudo"><span class="text">First</span></a>
+	<a href="/<%= nav.previous %>" class="icon-backward button pseudo"><span class="text">Prev</span></a>
+	<a href="/<%= math.random(1, 1624) %>" class="icon-random button pseudo"><span class="text">Random</span></a>
+	<a href="/<%= nav.next %>" class="icon-forward button pseudo"><span class="text">Next</span></a>
+	<a href="/1624" class="icon-step-forward button pseudo"><span class="text">Last</span></a>
+</p>
+<% end %>
