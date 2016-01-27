@@ -1,5 +1,5 @@
 # MobileComics
-I got really tired of pinching and zooming and awkwardly scrolling webcomics on mobile. I figured there has to be a better way and thought up of MobileComics. ATM, this is just a proof of concept, but if there's interest, I'll carry on with some more of what's laid out here.
+I got really tired of pinching and zooming and awkwardly scrolling webcomics on mobile. I figured there has to be a better way and thought up of MobileComics. ATM, this is just a proof of concept, but if there's interest, I'll carry on with some more of what's laid out here. You can take a look at the POC [here](http://fouriertransformer.github.io/MobileComics/)
 
 ## Basic Premise
 You are presented with a full-width image of the day's comic. You click into one of the panels, and it opens up a gallery and then you can scroll through all of the panels in the strip (with zooming functions on a per-panel basis). However, I wanted to make it easy for the content creator, so they only have to upload an image, wait for the javascript to detect the panel borders, and review (and possibly edit) the detected areas. From there, the server will take care of cropping and keeping track of image sizes.
