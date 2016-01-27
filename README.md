@@ -22,3 +22,5 @@ The cropping screen is what someone would see after uploading an image. Some thi
 * JS libs used: [PhotoSwipe](http://photoswipe.com/) & [tracking.js](https://trackingjs.com/)
 * Lua modules used: [Magick](https://github.com/leafo/magick), [Lapis](http://leafo.net/lapis/), and the ever-wonderful cjson
 * Loosely based on the interesting paper *Comics page structure analysis based on automatic panel extraction* by Anh Khoi Ngo ho, Jean-Christophe Burie, and Jean-Marc Ogier.
+* All comics are from the glorious mind of Randall Munroe creator of [xkcd](http://xkcd.com) used under [Creative Commons Attribution-NonCommercial 2.5 License](http://creativecommons.org/licenses/by-nc/2.5/).
+* The codebase is loosely based on [DailyMath](https://github.com/FourierTransformer/DailyMath) and as such, is under GPLv2.
