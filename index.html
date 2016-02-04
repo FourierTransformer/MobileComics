@@ -311,10 +311,13 @@
 			}
 		};
 
-		imageMapResize();
 		initPhotoSwipeFromDOM('.demo-gallery');
 
 	})();
+
+    window.addEventListener("DOMContentLoaded", function() {
+    	document.getElementsByAttribute('map').imageMapResize();
+    }, false);
 
 	</script>
 
